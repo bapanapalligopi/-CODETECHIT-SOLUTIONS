@@ -1,11 +1,12 @@
 import java.util.*;
-
+//creating class calculator for operations.
 public class Calculator {
 
+    //add method to add multiple integers
     public static double Addition(double... operands) {
         return Arrays.stream(operands).sum();
     }
-
+    //subtraction method
     public static double Subtraction(double... operands) {
         double result = operands[0];
         for (int i = 1; i < operands.length; i++) {
@@ -13,7 +14,7 @@ public class Calculator {
         }
         return result;
     }
-
+    //multiplication method
     public static double Multiplication(double... operands) {
         double result = 1;
         for (double operand : operands) {
@@ -21,7 +22,7 @@ public class Calculator {
         }
         return result;
     }
-
+//division method
     public static double Division(double... operands) {
         double result = operands[0];
         for (int i = 1; i < operands.length; i++) {
@@ -33,10 +34,10 @@ public class Calculator {
         }
         return result;
     }
-
+//main method
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        //user choice
         int choice;
         do {
             System.out.println("\nChoose an operation:");
