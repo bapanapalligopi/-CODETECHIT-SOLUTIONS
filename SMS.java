@@ -1,5 +1,6 @@
 import java.util.*;
 
+// Create class Student having name, marks
 class Student {
     private String name;
     private ArrayList<Integer> marks;
@@ -26,9 +27,11 @@ class Student {
         this.marks = marks;
     }
 }
+
 public class SMS {
     private HashMap<Integer, Student> students = new HashMap<>();
 
+    // Add a new student to the system
     public void addStudent(int rollNumber, String name, ArrayList<Integer> marks) {
         if (students.containsKey(rollNumber)) {
             System.out.println("Student with the same number already present. Please choose a unique number.");
@@ -39,6 +42,7 @@ public class SMS {
         }
     }
 
+    // Delete a student from the system
     public void deleteStudent(int rollNumber) {
         if (students.containsKey(rollNumber)) {
             students.remove(rollNumber);
@@ -48,8 +52,8 @@ public class SMS {
         }
     }
 
-    public void updateStudent(int rollNumber, String name) 
-    {
+    // Update information for an existing student
+    public void updateStudent(int rollNumber, String name) {
         Scanner sc = new Scanner(System.in);
         if (students.containsKey(rollNumber)) {
             System.out.println("Press 1 for updating name, press 2 for updating marks, or press 3 for both");
@@ -71,12 +75,14 @@ public class SMS {
         }
     }
 
+    // Helper method to update student name
     private void updateStudentName(int rollNumber, Scanner sc) {
         System.out.print("Enter new name: ");
         String updatedName = sc.next();
         students.get(rollNumber).setName(updatedName);
     }
 
+    // Helper method to update student marks
     private void updateStudentMarks(int rollNumber, Scanner sc) {
         System.out.println("Enter the number of subjects: ");
         int numberOfSubjects = sc.nextInt();
@@ -88,6 +94,8 @@ public class SMS {
         }
         students.get(rollNumber).setMarks(updatedMarks);
     }
+
+    // Display the list of students
     public void displayStudents() {
         System.out.println("The Student List is\n");
         System.out.println("rollnumber" + "\t" + "name" + "\t" + "marks");
@@ -100,6 +108,8 @@ public class SMS {
             System.out.println(num + "\t\t" + name + "\t" + marks);
         }
     }
+
+    // Calculate and display percentage and grade for a student
     public void percentageGrade(int rollNumber, String name) {
         if (students.containsKey(rollNumber)) {
             System.out.println("Your RollNumber is: " + rollNumber);
@@ -128,6 +138,7 @@ public class SMS {
         }
     }
 
+    // Main method to run the program
     public static void main(String[] args) {
         SMS st = new SMS();
         try (Scanner scanner = new Scanner(System.in)) {
@@ -144,6 +155,7 @@ public class SMS {
 
                 switch (choice) {
                     case 1:
+                        // Add a new student
                         System.out.print("Enter Roll Number: ");
                         int rollNumber = scanner.nextInt();
                         System.out.print("Enter Name: ");
@@ -160,9 +172,11 @@ public class SMS {
                         System.out.println("Student added successfully.");
                         break;
                     case 2:
+                        // Display the list of students
                         st.displayStudents();
                         break;
                     case 3:
+                        // Update student information
                         System.out.print("Enter Roll Number: ");
                         int updateRollNumber = scanner.nextInt();
                         System.out.print("Enter Name: ");
@@ -170,6 +184,7 @@ public class SMS {
                         st.updateStudent(updateRollNumber, updateName);
                         break;
                     case 4:
+                        // Calculate percentage and grade for a student
                         System.out.print("Enter Roll Number: ");
                         int percentageRollNumber = scanner.nextInt();
                         System.out.print("Enter Name: ");
@@ -177,6 +192,7 @@ public class SMS {
                         st.percentageGrade(percentageRollNumber, percentageName);
                         break;
                     case 5:
+                        // Exit the program
                         System.out.println("Exiting the program");
                         System.exit(0);
                     default:
